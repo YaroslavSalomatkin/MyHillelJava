@@ -1,4 +1,5 @@
 package lesson_04;
+import java.math.BigInteger;
 import java.util.Scanner;
 
 public class NumberOfFibonacci {
@@ -11,7 +12,7 @@ public class NumberOfFibonacci {
             index = scanner.nextInt();
         }
 
-        int[] fibonacciArray = new int[index];
+        long[] fibonacciArray = new long[index];
         fibonacciArray[0] = 1;
         if (index > 1) {
             fibonacciArray[1] = 1;
