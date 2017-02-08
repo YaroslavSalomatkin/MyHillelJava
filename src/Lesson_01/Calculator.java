@@ -1,6 +1,9 @@
 package Lesson_01;
 import java.util.Scanner;
 
+/**
+ * Test header
+ */
 public class Calculator {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
