@@ -12,14 +12,14 @@ public class NumberOfFibonacci {
             index = scanner.nextInt();
         }
 
-        long[] fibonacciArray = new long[index];
-        fibonacciArray[0] = 1;
+        BigInteger[] fibonacciArray = new BigInteger[index];
+        fibonacciArray[0] = BigInteger.valueOf(1);
         if (index > 1) {
-            fibonacciArray[1] = 1;
+            fibonacciArray[1] = BigInteger.valueOf(1);
         }
 
         for (int i = 2; i < fibonacciArray.length; i++) {
-            fibonacciArray[i] = fibonacciArray[i - 2] + fibonacciArray[i - 1];
+            fibonacciArray[i] = fibonacciArray[i - 2].add(fibonacciArray[i - 1]);
         }
 
         System.out.print("\nNumber " + index + " in the sequence Fibonacci = " + fibonacciArray[index-1]);
