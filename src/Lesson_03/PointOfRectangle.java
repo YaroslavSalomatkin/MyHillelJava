@@ -1,4 +1,5 @@
 package Lesson_03;
+
 import java.util.Scanner;
 
 public class PointOfRectangle {
@@ -17,35 +18,40 @@ public class PointOfRectangle {
         int sizeY = upperLeftCornerY - bottomRightCornerY;
 
         String[][] points = new String[sizeX][sizeY];
-        for (int i = upperLeftCornerY; i < bottomRightCornerY; i--) {
-            for (int j = upperLeftCornerX; j < sizeX + upperLeftCornerX; j++) {
-                points[i][j] = i + "X" + j + "y";
+        for (int i = 0; i < sizeY; i++) {
+            for (int j = 0; j < sizeX; j++) {
+                points[j][i] = (j + upperLeftCornerX) + "X" + (upperLeftCornerY - i) + "Y";
             }
         }
 
-        for (int i = 0; i < sizeY; i++) {
-            for (int j = 0; j < sizeY; j++) {
-                points[i][j] = (upperLeftCornerX + i) + "X" + (upperLeftCornerY - j) + "Y";
-            }
-        }
+        //printRectangle(points, sizeX, sizeY);
 
         System.out.print("\nEnter POINT coordinates by X: ");
         pointX = scanner.nextInt();
         System.out.print("Enter POINT coordinates by Y: ");
         pointY = scanner.nextInt();
-        String pointCoordinates = pointX + "X" + pointY + "Y";
+        String pointCoordinates = (pointX + 1) + "X" + (pointY + 1) + "Y";
 
         if (search(pointCoordinates, points, sizeX, sizeY)) {
-            System.out.println("Point is in rectangle");
+            System.out.println("\nThis point is in rectangle");
         } else {
-            System.out.println("Point is not in rectangle");
+            System.out.println("\nThis point is not in rectangle");
+        }
+    }
+
+    private static void printRectangle(String[][] points, int sizeX, int sizeY) {
+        for (int i = 0; i < sizeY; i++) {
+            for (int j = 0; j < sizeX; j++) {
+                System.out.print(points[j][i] + "\t");
+            }
+            System.out.println();
         }
     }
 
     private static boolean search(String pointCoordinates, String[][] points, int sizeX, int sizeY) {
         for (int i = 0; i < sizeY; i++) {
             for (int j = 0; j < sizeX; j++) {
-                if (points[i][j].equals(pointCoordinates)) {
+                if (points[j][i].equals(pointCoordinates)) {
                     return true;
                 }
             }
