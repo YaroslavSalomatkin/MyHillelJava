@@ -1,4 +1,4 @@
-package Lesson_02;
+package lesson_02;
 
 public class GraphicsConsole {
     public static void main(String[] args) {

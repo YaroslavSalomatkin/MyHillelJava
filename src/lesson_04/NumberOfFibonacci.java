@@ -1,4 +1,4 @@
-package Lesson_04;
+package lesson_04;
 import java.util.Scanner;
 
 public class NumberOfFibonacci {
