@@ -6,7 +6,7 @@ public class NumberOfFibonacci {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Enter index number in the sequence Fibonacci: ");
         int index = scanner.nextInt();
-        while (index < 0) {
+        while (index <= 0) {
             System.out.print("Incorrect! Try again: ");
             index = scanner.nextInt();
         }
