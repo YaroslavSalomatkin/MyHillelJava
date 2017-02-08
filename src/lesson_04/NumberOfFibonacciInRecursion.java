@@ -1,5 +1,6 @@
 package lesson_04;
 
+import java.math.BigInteger;
 import java.util.Scanner;
 
 public class NumberOfFibonacciInRecursion {
@@ -11,13 +12,14 @@ public class NumberOfFibonacciInRecursion {
             System.out.print("Incorrect! Try again: ");
             index = scanner.nextInt();
         }
-        System.out.print("\nNumber " + index + " in the sequence Fibonacci = " + fibonacciRecursion(index));
+        System.out.print("\nNumber " + index + " in the sequence Fibonacci = " + fibonacciRecursion(index, BigInteger.ZERO, BigInteger.ONE));
     }
 
-    private static int fibonacciRecursion(int index) {
-        if (index == 1 || index == 2) {
-            return 1;
+    private static BigInteger fibonacciRecursion(int index, BigInteger a, BigInteger b) {
+        if (index == 0) {
+            return a;
+        } else {
+            return fibonacciRecursion(index - 1, b, a.add(b));
         }
-        return fibonacciRecursion(index - 1) + fibonacciRecursion(index - 2);
     }
 }
