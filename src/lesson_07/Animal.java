@@ -1,6 +1,6 @@
 package lesson_07;
 
-public class Animal {
+public abstract class Animal {
     int id;
     int age;
     int weight;

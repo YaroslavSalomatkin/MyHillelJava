@@ -1,6 +1,6 @@
 package lesson_07;
 
-public class Wild extends Animal {
+public abstract class Wild extends Animal {
     boolean isPredator;
 
     public Wild (int id, int age, int weight, String color, boolean isPredator) {

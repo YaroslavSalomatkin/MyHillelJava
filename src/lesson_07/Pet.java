@@ -1,6 +1,6 @@
 package lesson_07;
 
-public class Pet extends Animal {
+public abstract class Pet extends Animal {
     String name;
     boolean isVactinated;
 
