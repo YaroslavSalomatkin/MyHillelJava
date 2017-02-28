@@ -26,6 +26,7 @@ public abstract class Pet extends Animal {
         isVactinated = vactinated;
     }
 
+    @Override
     public String voice() {
         return super.voice() + "my name is " + name + ". ";
     }

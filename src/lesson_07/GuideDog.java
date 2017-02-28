@@ -1,6 +1,6 @@
 package lesson_07;
 
-public class GuideDog extends Pet {
+public class GuideDog extends Pet implements Named, Voicing{
     boolean isTrained;
 
     public GuideDog(int id, String name, int age, int weight, String color, boolean isVactinated, boolean isTrained) {
@@ -15,6 +15,7 @@ public class GuideDog extends Pet {
         System.out.println("OK, go home!");
     }
 
+    @Override
     public String voice() {
         String voice = super.voice() + " Woof!";
         if (isTrained) {
