@@ -2,23 +2,27 @@ package lesson_08;
 
 public class MyCollection {
 
-    private Object[] myCollection;
+    private Object[] objects;
 
     public MyCollection(int size) {
-        myCollection = new Object[size];
+        objects = new Object[size];
+    }
+
+    public MyCollection() {
+        objects = new Object[0];
     }
 
     public int size() {
-        return myCollection.length;
+        return objects.length;
     }
 
     public boolean isEmpty() {
-        return (myCollection.length == 0);
+        return (objects.length == 0);
     }
 
     public boolean contains(Object object) {
-        for (int i = 0; i < myCollection.length; i++) {
-            if (object.equals(myCollection[i])) {
+        for (int i = 0; i < objects.length; i++) {
+            if (object.equals(objects[i])) {
                 return true;
             }
         }
@@ -26,86 +30,83 @@ public class MyCollection {
     }
 
     public void add(Object object) {
-        Object[] newObjects = new Object[myCollection.length + 1];
-        for (int i = 0; i < myCollection.length; i++) {
-            newObjects[i] = myCollection[i];
+        Object[] newObjects = new Object[objects.length + 1];
+        for (int i = 0; i < objects.length; i++) {
+            newObjects[i] = objects[i];
         }
-        newObjects[myCollection.length] = object;
-        myCollection = newObjects;
+        newObjects[objects.length] = object;
+        objects = newObjects;
     }
 
     public void remove(Object object) {
-        for (int i = 0; i < myCollection.length; i++) {
-            if (myCollection[i].equals(object)) {
-                myCollection[i] = null;
-            }
-        }
-    }
-
-    public void removeNullElements() {
-        int newSize = myCollection.length;
-        for (int i = 0; i < myCollection.length - 1; i++) {
-            if (myCollection[i] == null) {
-                for (; i < myCollection.length - 1; i++) {
-                    myCollection[i] = myCollection[i + 1];
+        for (int i = 0; i < objects.length; i++) {
+            if (objects[i].equals(object)) {
+                objects[i] = null;
+                for (; i < objects.length - 1; i++) {
+                    objects[i] = objects[i + 1];
                 }
-                newSize--;
+                Object[] array = new Object[objects.length - 1];
+                for (int j = 0; j < objects.length - 1; j++) {
+                    array[j] = objects[j];
+                }
+                this.objects = array;
             }
         }
-        Object[] array = new Object[newSize];
-        for (int i = 0; i < newSize; i++) {
-            array[i] = myCollection[i];
-        }
-        this.myCollection = array;
     }
 
-    public Object indexOf(int index) {
-        return myCollection[index];
+
+    private Object getObject(int index) {
+        return objects[index];
     }
 
-    public void setValueObject(Object object, int index) {
-        myCollection[index] = object;
-
+    private Object[] getArrayObjects() {
+        return this.objects;
     }
 
     public void addAll(MyCollection collection) {
-        MyCollection newArray = new MyCollection(this.size() + collection.size());
-        for (int i = 0; i < this.size(); i++) {
-            newArray.setValueObject(myCollection[i], i);
+        MyCollection newArray = new MyCollection();
+
+        for (int i = 0; i < objects.length; i++) {
+            newArray.add(objects[i]);
         }
-        for (int i = this.size(); i < newArray.size(); i++) {
-            newArray.setValueObject(collection.indexOf(i), i);
+        for (int i = 0; i < collection.size(); i++) {
+            newArray.add(collection.getObject(i));
         }
+        this.objects = newArray.getArrayObjects();
     }
 
     public void clear() {
-        this.myCollection = null;
+        this.objects = new Object[0];
     }
 
     public void retainAll(MyCollection collection) {
-        for (int i = 0; i < collection.size(); i++) {
-            if (!this.contains(collection.indexOf(i))) {
-                this.remove(this.indexOf(i));
+        for (int i = 0; i < this.size(); i++) {
+            if (!collection.contains(this.getObject(i))) {
+                this.remove(this.getObject(i));
             }
         }
-        this.removeNullElements();
     }
 
     public void removeAll(MyCollection collection) {
-        for (int i = 0; i < collection.size(); i++) {
-            if (this.contains(collection.indexOf(i))) {
-                this.remove(this.indexOf(i));
+        for (int i = 0; i < this.size(); i++) {
+            if (collection.contains(this.getObject(i))) {
+                this.remove(this.getObject(i));
             }
         }
-        this.removeNullElements();
     }
 
     public boolean containsAll(MyCollection collection) {
         for (int i = 0; i < collection.size(); i++) {
-            if (!this.contains(collection.indexOf(i))) {
+            if (!this.contains(collection.getObject(i))) {
                 return false;
             }
         }
         return true;
+    }
+
+    public void printCollection() {
+        for (int i = 0; i < objects.length; i++) {
+            System.out.println(objects[i].toString());
+        }
     }
 }
