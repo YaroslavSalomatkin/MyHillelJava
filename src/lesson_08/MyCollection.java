@@ -1,6 +1,8 @@
 package lesson_08;
 
-public class MyCollection {
+import java.util.Iterator;
+
+public class MyCollection implements Iterable{
 
     private Object[] objects;
 
@@ -108,5 +110,10 @@ public class MyCollection {
         for (int i = 0; i < objects.length; i++) {
             System.out.println(objects[i].toString());
         }
+    }
+
+    @Override
+    public Iterator iterator() {
+        return null;
     }
 }

@@ -1,4 +1,4 @@
-package lesson_09;
+package lesson_09.MyLinkedListIterable;
 
 public class NewElement {
     private Object object;
@@ -15,15 +15,11 @@ public class NewElement {
         this.object = object;
     }
 
-    public boolean hasNext() {
-        return this.getNext() != null;
-    }
-
-    public NewElement getNext() {
+    public NewElement next() {
         return next;
     }
 
-    public void setNext(NewElement next) {
+    protected void setNext(NewElement next) {
         this.next = next;
     }
 
@@ -31,16 +27,11 @@ public class NewElement {
         return object;
     }
 
-    public NewElement getPrev() {
+    public NewElement prev() {
         return prev;
     }
 
-    public void setPrev(NewElement prev) {
+    protected void setPrev(NewElement prev) {
         this.prev = prev;
-    }
-
-    @Override
-    public String toString() {
-        return "NewElement{" + "object=" + object + '}';
     }
 }
