@@ -5,9 +5,7 @@ import java.util.*;
 public class MyHashMap<K, V> implements Map {
     private LinkedList<Entry>[] table;
     private int capacity = 16;
-    private double loadFactor = 0.75;
-    private int threshold;
-    private int size;
+    private int size = 0;
 
     public MyHashMap() {
         this.table = new LinkedList[capacity];
