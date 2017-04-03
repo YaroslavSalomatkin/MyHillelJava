@@ -19,7 +19,6 @@ public class Main {
         cat.addListenerIllness(veterinary);
         cat.addListenerIllness(director);
 
-
         tiger.addListenerHungry(director);
         tiger.addListenerHungry(veterinary);
         tiger.addListenerHungry(fooder);
